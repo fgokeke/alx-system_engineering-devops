@@ -1,2 +1,2 @@
 #!/bin/bash
-install -D [A-Z]* . /tmp/u/[A-Z]*
+mv [A-Z]* . /tmp/u/[A-Z]*
