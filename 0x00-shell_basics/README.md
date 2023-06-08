@@ -1,1 +1,1 @@
-Shell basics at ALX school.
+0. Script for switching users.
