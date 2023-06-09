@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s, " $(ls -a -p)
+ls -pamv
