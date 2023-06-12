@@ -7,3 +7,4 @@
 6. The 3rd lineof iacta.
 7. Create new file.
 8. Redirect output.
+9. Duplicate last line of iacta.
