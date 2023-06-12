@@ -2,3 +2,4 @@
 1. Display a confused smiley.
 2. Display content of /etc/passwd file.
 3. Display content of two files.
+4. Display the last 10 lines of /etc/passwd.
