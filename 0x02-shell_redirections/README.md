@@ -6,3 +6,4 @@
 5. Display the first 10 lines of /etc/passwd
 6. The 3rd lineof iacta.
 7. Create new file.
+8. Redirect output.
