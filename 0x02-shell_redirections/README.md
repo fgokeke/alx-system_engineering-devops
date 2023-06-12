@@ -8,3 +8,4 @@
 7. Create new file.
 8. Redirect output.
 9. Duplicate last line of iacta.
+10. Delete all .js files.
