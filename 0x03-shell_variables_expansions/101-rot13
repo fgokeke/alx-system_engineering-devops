@@ -1,2 +1,2 @@
 #!/bin/bash
-tr '\x00-\xFF' 'x6D-\xFF\x00-\x6C'
+tr 'N-ZA-Mn-za-m' 'A-Za-z'
