@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -empty -o -type d -empty | ls -1adb
+find . -name "*" -type f -empty -o -type d -empty | ls -1ab
