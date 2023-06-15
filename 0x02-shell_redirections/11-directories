@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d -name ".*" ! -wholename "../." | ls | wc -l
+ls -la | grep '^d' | wc -l
