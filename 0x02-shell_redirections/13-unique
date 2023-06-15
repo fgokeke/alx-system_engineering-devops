@@ -1,2 +1,2 @@
 #!/bin/bash
-xargs -L 1 | sort | uniq -u | xargs -n 1
+sort | uniq -u
