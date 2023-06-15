@@ -1,2 +1,2 @@
 #!/bin/bash
-xargs -L 1 | sort | uniq -u | printf "%s\n"
+xargs -L 1 | printf "%s\n" | sort | uniq -u
