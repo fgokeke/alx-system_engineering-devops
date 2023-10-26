@@ -19,3 +19,94 @@ Fill the SSH public key field of your intranet profile with the public key you j
 Keep the private key to yourself in a secure location, you will use it later to connect to your servers using SSH. Some storing ideas are Dropbox, Google Drive, password manager, USB key. Failing to do so will prevent you to access your servers, which will prevent you from doing your projects
 If you decide to add a passphrase to your key, make sure to save this passphrase in a secure location, you will not be able to use your keys without the passphrase
 SSH and RSA keys will be covered in depth in a later project.
+
+1. For Best School loop
+mandatory
+Write a Bash script that displays Best School 10 times.
+
+Requirement:
+
+You must use the for loop (while and until are forbidden)
+sylvain@ubuntu$ head -n 2 1-for_best_school 
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+sylvain@ubuntu$ ./1-for_best_school 
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+sylvain@ubuntu$ 
+Note that:
+
+The first line of my Bash script starts with #!/usr/bin/env bash
+The second line of my Bash scripts is a comment explaining what it is doing
+
+2. While Best School loop
+mandatory
+Write a Bash script that displays Best School 10 times.
+
+Requirements:
+
+You must use the while loop (for and until are forbidden)
+sylvain@ubuntu$ ./2-while_best_school
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+sylvain@ubuntu$ 
+
+
+3. Until Best School loop
+mandatory
+Write a Bash script that displays Best School 10 times.
+
+Requirements:
+
+You must use the until loop (for and while are forbidden)
+sylvain@ubuntu$ ./3-until_best_school
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+sylvain@ubuntu$
+
+
+4. If 9, say Hi!
+mandatory
+Write a Bash script that displays Best School 10 times, but for the 9th iteration, displays Best School and then Hi on a new line.
+
+Requirements:
+
+You must use the while loop (for and until are forbidden)
+You must use the if statement
+sylvain@ubuntu$ ./4-if_9_say_hi
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Best School
+Hi
+Best School
+sylvain@ubuntu$
