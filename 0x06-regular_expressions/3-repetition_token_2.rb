@@ -3,7 +3,7 @@
 #+ one argument and pass it to a regular expression matching method
 
 def match_hbtn(argument)
-  pattern = /(hbt{1,4}n)/
+  pattern = /(hbt+n)/
   match = argument.scan(pattern)
   if match.any?
     puts match.join
