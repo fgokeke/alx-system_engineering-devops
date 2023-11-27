@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# A Bash script that displays listening ports:
+#+ That only shows listening sockets
+#+ That shows the PID and name of the program to which each socket belongs
+
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+netstat -tuln | awk '$6 == "LISTEN" {print $1, $4, $7}' | while read -r proto local foreign; do
+        pid=$(lsof -i -n -sTCP:LISTEN -P -t -sTCP:LISTEN -i :"${local##*:}")
+        program_name=$(ps -p "$pid" -o comm=)
+        echo "$proto *:$local $foreign LISTEN $pid/$program_name"
+done    
+
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+
+lsof -U +c 0 | grep LISTEN | awk '{print $1, $4, $5, $9}' | while read -r proto refcnt flags type state inode path; do
+	pid=$(lsof -U -t -c "$path")
+	program_name=$(ps -p "$pid" -o comm=)
+	echo "$proto $refcnt $flags $type $state $inode $pid/$program_name $path"
+done
