@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# A Bash script that configures a new Ubuntu machine to install nginx
+
+sudo apt-get update
+
+sudo apt-get install -y nginx
+
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+sudo sed -i 's/\blisten 80\b/listen 80 default_server/' /etc/nginx/sites-available/default
+
+sudo service nginx restart
