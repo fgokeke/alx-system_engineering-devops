@@ -1,46 +1,47 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Install and configure HAproxy on your lb-01 server.
 
-# Update the package list
-sudo apt-get update
-
-# Install HAProxy
 sudo apt-get install -y haproxy
 
-# Configure HAProxy
-cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg
-global
-    log /dev/log local0
-    log /dev/log local1 notice
-    chroot /var/lib/haproxy
-    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
-    stats timeout 30s
+echo "ENABLE=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
+
+printf %s "global
+    log 127.0.0.1 local0 notice
+    maxconn 2000
     user haproxy
     group haproxy
-    daemon
 
 defaults
-    log global
-    mode http
-    option httplog
-    option dontlognull
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option  redispatch
     timeout connect 5000
-    timeout client 50000
-    timeout server 50000
+    timeout client  30000
+    timeout server  30000
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
 
-frontend http_front
-    bind *:80
-    stats uri /haproxy?stats
-    default_backend http_back
+frontend http-in
+    timeout client 30000
+    bind 0:80
+    default_backend servers
 
-backend http_back
+backend servers
+    timeout connect 3000
+    timeout server 30000
     balance roundrobin
     server 228560-web-01 54.167.85.104:80 check
     server 228560-web-02 54.173.210.115:80 check
-EOF
+" >> /etc/haproxy/haproxy.cfg
 
-# Restart HAProxy to apply the changes
-sudo systemctl restart haproxy
-
-# Ensure HAProxy is managed via an init script
-sudo systemctl enable haproxy
+sudo service haproxy restart
