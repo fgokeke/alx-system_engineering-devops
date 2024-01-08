@@ -5,6 +5,8 @@ sudo apt-get update
 
 sudo apt-get install -y nginx
 
+# shellcheck disable=SC2154
+
 echo "add_header X-Served-By $hostname;" | sudo tee /etc/nginx/conf.d/custom_header.conf
 
 sudo service nginx restart
