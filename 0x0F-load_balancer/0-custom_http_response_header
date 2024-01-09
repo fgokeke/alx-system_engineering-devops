@@ -7,6 +7,8 @@ sudo apt-get install -y nginx
 
 # shellcheck disable=SC2154
 
-echo "add_header X-Served-By $hostname;" | sudo tee /etc/nginx/conf.d/custom_header.conf
+# echo "add_header X-Served-By $hostname;" | sudo tee /etc/nginx/conf.d/custom_header.conf
+
+sudo sed -i '/^\slocation.*/i \        add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
 
 sudo service nginx restart
