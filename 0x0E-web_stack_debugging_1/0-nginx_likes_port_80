@@ -6,4 +6,4 @@ rm default;
 ln -s /etc/nginx/sites-available/default default;
 
 # Start Nginx
-sudo service nginx restart
+service nginx restart
