@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Bash script that generates a MySQL dump and creates a compressed archive out of it.
 
 # Assign the provided argument to a variable
