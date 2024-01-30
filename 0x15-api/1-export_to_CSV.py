@@ -42,19 +42,9 @@ def fetch_todo_list_progress(employee_id):
     user_data = user_response.json()
     todos_data = todos_response.json()
 
-    # Calculate TODO progress
+    # Get employee name
     employee_name = user_data.get('name')
-    total_tasks = len(todos_data)
-    completed_tasks = len([task for task in todos_data if task['completed']])
-
-    # Output the TODO list progress
-    print(
-        f"Employee {employee_name} is done with "
-        f"tasks({completed_tasks}/{total_tasks}): "
-    )
-    for task in todos_data:
-        if task['completed']:
-            print(f"\t {task['title']}")
+    employee_username = user_data.get('username')
 
     # Export to CSV
     csv_filename = f"{employee_id}.csv"
@@ -63,7 +53,7 @@ def fetch_todo_list_progress(employee_id):
         for task in todos_data:
             writer.writerow([
                 employee_id,
-                employee_name,
+                employee_username,
                 task['completed'],
                 task['title']
             ])
